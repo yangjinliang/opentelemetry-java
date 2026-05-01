@@ -114,14 +114,14 @@ class LoggingSpanExporterTest {
     assertThat(logs.getEvents().get(0).getMessage())
         .isEqualTo(
             "'testSpan1' : 12345678876543211234567887654321 8765432112345678 "
-                + "INTERNAL [tracer: tracer1:] "
+                + "INTERNAL OK [tracer: tracer1:] "
                 + "{animal=\"cat\", bytes=ValueBytes{AQID}, empty=ValueEmpty{}, "
                 + "heterogeneousArray=ValueArray{[\"string\",123]}, lives=9, "
                 + "map=KeyValueList{{\"nested\":\"value\"}}}");
     assertThat(logs.getEvents().get(1).getMessage())
         .isEqualTo(
             "'testSpan2' : 12340000000043211234000000004321 8765000000005678 "
-                + "CLIENT [tracer: tracer2:1.0] {}");
+                + "CLIENT ERROR [tracer: tracer2:1.0] {}");
   }
 
   @Test
