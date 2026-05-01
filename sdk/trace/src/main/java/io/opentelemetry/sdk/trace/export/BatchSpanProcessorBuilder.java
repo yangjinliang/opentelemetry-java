@@ -117,6 +117,12 @@ public final class BatchSpanProcessorBuilder {
    */
   public BatchSpanProcessorBuilder setMaxQueueSize(int maxQueueSize) {
     checkArgument(maxQueueSize > 0, "maxQueueSize must be positive.");
+    if (this.maxExportBatchSize > maxQueueSize) {
+      logger.log(
+          Level.WARNING,
+          "maxExportBatchSize should not exceed maxQueueSize. Setting maxExportBatchSize to {0} instead of {1}",
+          new Object[] {maxQueueSize, this.maxExportBatchSize});
+    }
     this.maxQueueSize = maxQueueSize;
     return this;
   }
