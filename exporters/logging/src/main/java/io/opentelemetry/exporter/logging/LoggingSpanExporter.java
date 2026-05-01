@@ -53,6 +53,12 @@ public final class LoggingSpanExporter implements SpanExporter {
           .append(span.getSpanId())
           .append(" ")
           .append(span.getKind())
+          .append(" ")
+          .append(span.getStatus().getStatusCode().name())
+          .append(
+              span.getStatus().getDescription() != null
+                  ? "(" + span.getStatus().getDescription() + ")"
+                  : "")
           .append(" [tracer: ")
           .append(instrumentationScopeInfo.getName())
           .append(":")
